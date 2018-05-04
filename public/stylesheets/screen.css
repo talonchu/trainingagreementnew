@@ -1,0 +1,39 @@
+.temp{
+    display: none;
+}
+.temp1{
+    display: block;
+}
+.td{
+    text-align: left;
+    vertical-align: super
+}
+.td_first{
+    text-align: left;
+    vertical-align: top;
+    text-indent: 2em;
+    margin-top: 10px;
+}
+.program{text-decoration: underline;}
+.input {
+    background-color:#ffffff;
+    font-family:Tahoma, Arial, 瀹嬩綋;
+    font-size: 16px;
+    line-height:15px;
+    COLOR: #000000;
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: solid;
+    border-left-style: none;
+    border-bottom-color: #000000;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 1px;
+    border-left-width: 0px;
+    text-align:center;
+    outline: none;}
+.blank{display: none}
+.show{margin-left:-10mm;}
+.title{font-size:22px;}
+.english{font-family:"Times New Roman";}
+.print_blank{display: none}

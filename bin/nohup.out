@@ -1,0 +1,109 @@
+Listening on port 3000
+[0mGET / [36m304 [0m36.418 ms - -[0m
+[0mGET /stylesheets/style.css [36m304 [0m4.492 ms - -[0m
+[0mGET /stylesheets/jquery.datetimepicker.css [36m304 [0m1.034 ms - -[0m
+[0mGET /bower_components/jquery/dist/jquery.js [36m304 [0m0.570 ms - -[0m
+[0mGET /bower_components/jquery/jquery.shCircleLoader-min.js [36m304 [0m0.499 ms - -[0m
+[0mGET /bower_components/bootstrap/dist/js/bootstrap.min.js [36m304 [0m1.919 ms - -[0m
+[0mGET /bower_components/jquery/jquery.datetimepicker.js [36m304 [0m0.734 ms - -[0m
+[0mGET /javascripts/check.js [36m304 [0m0.456 ms - -[0m
+[0mGET /javascripts/app.js [36m304 [0m0.418 ms - -[0m
+[0mGET /javascripts/employeeController.js [36m304 [0m0.456 ms - -[0m
+[0mGET /partials/addTrainingByEmployee.html [36m304 [0m0.606 ms - -[0m
+[0mGET /image/head.png [36m304 [0m0.503 ms - -[0m
+[0mGET / [36m304 [0m8.959 ms - -[0m
+[0mGET /stylesheets/style.css [36m304 [0m4.981 ms - -[0m
+[0mGET /stylesheets/jquery.datetimepicker.css [36m304 [0m1.017 ms - -[0m
+[0mGET /bower_components/jquery/dist/jquery.js [36m304 [0m1.727 ms - -[0m
+[0mGET /bower_components/jquery/jquery.shCircleLoader-min.js [36m304 [0m4.855 ms - -[0m
+[0mGET /bower_components/bootstrap/dist/js/bootstrap.min.js [36m304 [0m4.095 ms - -[0m
+[0mGET /bower_components/jquery/jquery.datetimepicker.js [36m304 [0m1.715 ms - -[0m
+[0mGET /javascripts/check.js [36m304 [0m1.451 ms - -[0m
+[0mGET /javascripts/app.js [36m304 [0m1.605 ms - -[0m
+[0mGET /javascripts/employeeController.js [36m304 [0m1.693 ms - -[0m
+[0mGET /partials/addTrainingByEmployee.html [36m304 [0m1.717 ms - -[0m
+[0mGET /image/head.png [36m304 [0m1.429 ms - -[0m
+[0mGET / [36m304 [0m7.025 ms - -[0m
+[0mGET /stylesheets/style.css [36m304 [0m1.790 ms - -[0m
+[0mGET /stylesheets/jquery.datetimepicker.css [36m304 [0m2.090 ms - -[0m
+[0mGET /bower_components/jquery/dist/jquery.js [36m304 [0m0.980 ms - -[0m
+[0mGET /bower_components/jquery/jquery.shCircleLoader-min.js [36m304 [0m1.831 ms - -[0m
+[0mGET /bower_components/bootstrap/dist/js/bootstrap.min.js [36m304 [0m1.381 ms - -[0m
+[0mGET /bower_components/jquery/jquery.datetimepicker.js [36m304 [0m1.629 ms - -[0m
+[0mGET /javascripts/check.js [36m304 [0m2.245 ms - -[0m
+[0mGET /javascripts/app.js [36m304 [0m2.335 ms - -[0m
+[0mGET /javascripts/employeeController.js [36m304 [0m1.593 ms - -[0m
+[0mGET /partials/employeeList.html [36m304 [0m1.507 ms - -[0m
+[0mGET /image/head.png [36m304 [0m1.308 ms - -[0m
+enter application
+[ { _id: 58c8fb324e1ef1904adcc630,
+    DATA_ID: '1',
+    EMP_ID: 'HE146',
+    EMP_NAME: 'Lily.Wang',
+    APPROVER: 'Vernon.Stinebaker',
+    CC: 'Fanny.Wang;',
+    TRAINING_PROGRAM: 'Certified ISO27001 Internal Auditor',
+    TOTAL_COST: '3710',
+    COMPANY_COVER: '3710',
+    TRAINING_PERIOD_FROM: '2015-03-26',
+    TRAINING_PERIOD_TO: '2015-03-27',
+    SET_PERIOD: '6 months',
+    SERVICE_PERIOD_FROM: '2015-03-28',
+    SERVICE_PERIOD_TO: '2015-09-27',
+    REASON: 'According pre-audit finding #4 we need conduct internal ISO audit by certified internal auditors. We can’t find related ISO standard item mentioned that requirement, but we still have the risk that BSI auditors require us to attend ISO training during ISO audit stage 1 and stage 2. Philip has communicated with Indian office, they also attended ISO training provided by ISO consultant company. So we want to apply for ISO 27001 internal auditor training provide by BSI China.',
+    CREATE_DATE: '2015-03-12  11:19:04',
+    CREATE_BY: 'Lily.Wang',
+    UPDATE_DATE: '2016-04-15  22:13:31',
+    UPDATE_BY: 'Lily.Wang',
+    STATUS: 'approved',
+    REJECT_NOTES: '',
+    TRAINING_INSTITUTION: 'BSI China',
+    COMPANY_COVER_RATE: '100%',
+    CHINESE_NAME: '王莉婧',
+    IDENTIFICATION: '152301197609051000',
+    TOTAL_COST_CN: '叁仟柒佰壹拾圆整',
+    COMPANY_COVER_CN: '叁仟柒佰壹拾圆整',
+    YEAR_CN: '2016',
+    MONTH_CN: '4',
+    DAY_CN: '15',
+    REJECTED: '0',
+    COMMENTS: 'Expense report has been submitted.',
+    COMMENTED: '1',
+    certification: '0' },
+  { _id: 58c8fb324e1ef1904adcc642,
+    DATA_ID: '41',
+    EMP_ID: 'HE146',
+    EMP_NAME: 'Lily.Wang',
+    APPROVER: 'Vernon.Stinebaker',
+    CC: 'Fanny.Wang;',
+    TRAINING_PROGRAM: 'Certified Scrum Developer (CSD)',
+    TOTAL_COST: '460.5',
+    COMPANY_COVER: '460.5',
+    TRAINING_PERIOD_FROM: '2014-10-16',
+    TRAINING_PERIOD_TO: '2014-11-25',
+    SET_PERIOD: '6 months',
+    SERVICE_PERIOD_FROM: '2014-11-26',
+    SERVICE_PERIOD_TO: '2015-05-25',
+    REASON: '',
+    CREATE_DATE: '2015-03-18  15:14:34',
+    CREATE_BY: 'Fanny.Wang',
+    UPDATE_DATE: '2016-04-15  22:13:15',
+    UPDATE_BY: 'Fanny.Wang',
+    STATUS: 'approved',
+    REJECT_NOTES: '',
+    TRAINING_INSTITUTION: 'Scrum Alliance',
+    COMPANY_COVER_RATE: '100%',
+    CHINESE_NAME: '王莉婧',
+    IDENTIFICATION: '152301197609051000',
+    TOTAL_COST_CN: '肆佰陆拾圆伍角',
+    COMPANY_COVER_CN: '肆佰陆拾圆伍角',
+    YEAR_CN: '2016',
+    MONTH_CN: '4',
+    DAY_CN: '15',
+    REJECTED: '0',
+    COMMENTS: '',
+    COMMENTED: '0',
+    certification: '0' } ]
+[0mGET /employee/HE146/Lily.Wang [36m304 [0m49.278 ms - -[0m
+[0mGET /image/glyphicons-halflings.png [36m304 [0m1.251 ms - -[0m
+[0mGET /partials/addTrainingByEmployee.html [36m304 [0m0.571 ms - -[0m

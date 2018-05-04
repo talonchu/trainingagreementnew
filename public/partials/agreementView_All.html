@@ -1,0 +1,561 @@
+<div class="col-xs-12" id="agreementshowdiv">
+    <form class="form-horizontal"  method="post" name="form"  action="" >
+        <div id="info">
+            <table style="font-size:12px;width:1100px;">
+                <tr>
+                    <td style="font-size:13px;"><b>Notice:</b></td>
+                    <td>&nbsp;&nbsp;1.</td>
+                    <td>&nbsp;You need to print it and sign your name for two copies, and then deliver them to the training coordinator.</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>&nbsp;&nbsp;2.</td>
+                    <td>&nbsp;Please use black pen to sign your name at the end of the contract.
+                        <div title="Print" ng-click="preview(2)" style="cursor:pointer;background-image:url('../image/glyphicons-halflings.png');background-repeat:no-repeat; background-position:-97px -44px; height: 20px; width: 20px; float:right;margin-right:10px">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="panel panel-default" style="overflow-y: auto; height: 500px;" id="agreeinfo2">
+            <div>&nbsp;</div>
+            <div class=""><center><img src="../image/header.png" width="200" height="110"></center></div>
+            <div>&nbsp;</div>
+            <div class="">
+                <div >
+                    <center><h3><b class="title chinese">培 训 协 议</b></h3></center>
+                </div >
+                <div >
+                    <center><h3><b class="title english">TRAINING AGREEMENT</b></h3></center>
+                </div>
+            </div>
+            <div class="print" >
+                <div class="body" style="margin-left:120px;">
+                    <div class="row" >
+                        <div class="col-xs-2 english">Party A&nbsp;:</div>
+                        <div class="col-xs-4 english">
+                            Perficient (China) Ltd.
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-xs-2 english">Address&nbsp;:</div>
+                        <div class="col-xs-8 english">
+                            Perficient China,Inc,<br/>
+                            No. 459 Qianmo Road, Binjiang District, Hangzhou, <br/>
+                            Juguang Center, Building C, 4th Floor<br/>
+                            Zhejiang 310052
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-2">甲方：</div>
+                        <div class="col-xs-4">
+                            博克软件（杭州）有限公司
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-2">注册地：</div>
+                        <div class="col-xs-8">
+                            浙江省杭州市滨江区阡陌路459号 <br/>聚光智慧中心C座4楼
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-2">邮编：</div>
+                        <div class="col-xs-3">
+                            310053
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <table class="col-xs-8 table-bordered table-condensed" style="background-color:#ffffff; margin-top:5px;margin-left: 30px; ">
+                            <thead>
+                            <tr>
+                                <td class="col-xs-4" style="font-size:6mm;">Party B/乙方:</td>
+                                <td class="col-xs-4" style="font-size:6mm;">ID number/身份证号: </td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="col-xs-4">
+
+                                    <input disabled="disabled" style="border:0px" name="nameCn" value="{{$parent.agreement.CHINESE_NAME}}" class="input"/>&nbsp;
+
+                                </td>
+                                <td class="col-xs-4">
+                                    <input style="border:0px" disabled="disabled" name="identification" value='{{$parent.agreement.IDENTIFICATION}}' class="input"/>&nbsp;
+                                </td>
+
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-10"style="margin-top: 5mm;">Pursuant to the applicable laws and regulations of the People's Republic of China ("China" or "PRC"), and in accordance with the principles of equality and fairness,
+                            Perficient (China) Ltd. (Party A) and <input disabled="disabled" type="text" name="nameEn"  class="input" value='{{$parent.agreement.EMP_NAME}}'> (Party B) have reached the following Agreement regarding the training program this day of <input disabled="disabled" type="text" name="signDate"  class="input" value='{{$parent.agreement.CREATE_DATE}}'>.
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-10 marginCn" >依据中华人民共和国（“中国”）的相关法律和规定，并依照公平公正的原则，
+                            博克软件（杭州）公司（甲方）和 <input disabled="disabled" type="text" name="" size="6" class="input" value='{{$parent.agreement.CHINESE_NAME}}'>（乙方）
+                            于 <input disabled="disabled" type="text" name="yearCn" size="4" class="input" value='{{$parent.agreement.YEAR_CN}}'>年
+                            <input disabled="disabled" type="text" name="monthCn" size="4" class="input" value='{{$parent.agreement.MONTH_CN}}'>月
+                            <input disabled="disabled" type="text" name="dayCn" size="4" class="input" value='{{$parent.agreement.DAY_CN}}'>日就培训项目达成以下协议：
+                        </div>
+                    </div>
+                    <div>&nbsp;</div>
+                </div>
+
+                <div class="body" style="margin-left:120px;">
+                    <table class="print_table">
+                        <tr >
+                            <td class="td" style="font-size:6mm;">1.&nbsp;&nbsp;</td>
+                            <td>
+                                <div class="col-xs-10">Party A agrees to sponsor Party B in the
+                                    <span class="program">{{$parent.agreement.TRAINING_PROGRAM}}</span>training program (hereafter referred to in this Agreement as “Training”)
+                                    organized by <input disabled="disabled" type="text" name="trainingOrganizationEn" value='{{$parent.agreement.TRAINING_INSTITUTION}}'  class="input"> from
+                                    <input disabled="disabled" type="text" name="trainingPeriodFromEn" size="12" value='{{$parent.agreement.TRAINING_PERIOD_FROM}}'  class="input"> to
+                                    <input disabled="disabled" type="text" name="trainingPeriodToEn" size="12" value='{{$parent.agreement.TRAINING_PERIOD_TO}}'  class="input">.
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td" style="font-size:6mm;">&nbsp;&nbsp;&nbsp;</td>
+                            <td>
+                                <div class="col-xs-10 marginCn">甲方基于工作需要，从
+                                    <input disabled="disabled" type="text" name="trainingPeriodFromCn" size="12" value='{{$parent.agreement.TRAINING_PERIOD_FROM}}'  class="input"> 起至
+                                    <input disabled="disabled" type="text" name="trainingPeriodToCn" size="12" value='{{$parent.agreement.TRAINING_PERIOD_TO}}'  class="input"> 将送乙方参加由
+                                    <input disabled="disabled" type="text" name="trainingOrganizationCn" value='{{$parent.agreement.TRAINING_INSTITUTION}}'  class="input">
+                                    组织的培训项目
+                                    <span class="program">{{$parent.agreement.TRAINING_PROGRAM}}</span>
+                                    （在接下来的合同中将用“培训”来指代）。
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="visible-print-block printFoot" style="text-align: center"><img src="../image/foot.png" width="860" height="70" ></div>
+                    <div class="visible-print-block PageNext" style="text-align: center"><img src="../image/header.png" width="200" height="110"></div>
+                    <table class="print_table">
+                        <tr><td colspan="2">&nbsp;</td></tr>
+                        <tr><td colspan="2">&nbsp;</td></tr>
+                        <tr class="">
+                            <td class="td margItem" style="font-size:6mm;">2.&nbsp;&nbsp;</td>
+                            <td>
+                                <div class="col-xs-10">During the Training period Party B shall be paid standard salary, welfare,insurance and/or other benefits as specified in Employment Agreement with Party A.</div>
+                                <div class="col-xs-10 marginCn1"><div class="marginCn1">在培训期间，甲方将照常向乙方支付工资、福利、保险费和/或者其他在和甲方签订的劳动协议中规定的福利。</div></div>
+                            </td>
+                        </tr>
+                        <tr><td colspan="2"><div>&nbsp;</div></td></tr>
+                        <tr><td colspan="2"><div>&nbsp;</div></td></tr>
+                        <tr>
+                            <td class="td" style="font-size:6mm;">3.&nbsp;&nbsp;</td>
+                            <td>
+                                <div class="col-xs-10">Training expenses are defined as expenses pertaining to and incurred by attending the training, including the tuition and examination paid by Party A and directly related travel and lodging fees. If the training location is in Hangzhou, travel expense will not be reimbursed.
+                                </div>
+                                <div class="col-xs-10 marginCn" >培训费用指因为参加培训而需支付和发生的费用，包括由甲方支付的学费、考试费,以及直接相关住宿和交通等费用(若培训地点在杭州，则培训交通费用由员工自行承担)。
+                                </div>
+                            </td>
+                        </tr>
+                        <tr><td colspan="2"><div>&nbsp;</div></td></tr>
+                        <tr><td colspan="2"><div>&nbsp;</div></td></tr>
+                        <tr>
+                            <td class="td" style="font-size:6mm;">4.&nbsp;&nbsp;</td>
+                            <td>
+                                <div class="col-xs-10">Payment conditions:
+                                    <table class="marginCn1">
+                                        <tr>
+                                            <td class="td">&nbsp;&nbsp;</td>
+                                            <td>
+                                                <div class="col-xs-12">
+                                                    <table>
+                                                        <tr>
+                                                            <td class="td">a.&nbsp;</td>
+                                                            <td>Contingent on the participant(s) successfully completing the training course including any exam or other evaluation, Party A will pay<input disabled="disabled" type="text" size="4" name="companyCoverRate" value='{{$parent.agreement.COMPANY_COVER_RATE}}'  class="input">of the full cost of the course.</td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr >
+                                            <td class="td">&nbsp;&nbsp;</td>
+                                            <td>
+                                                <div class="col-xs-12">
+                                                    <table>
+                                                        <tr>
+                                                            <td class="td">b.&nbsp;</td>
+                                                            <td>If Party B fails to successfully complete the course including any exam or evaluation, Party B will be responsible for 100% of the training fee.</td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td">&nbsp;&nbsp;</td>
+                            <td>
+                                <div class="col-xs-10 marginCn" >培训费用支付情况:</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                            <td>
+                                <div class="col-xs-10 ">
+                                    <table class="marginCn1">
+                                        <tr>
+                                            <td style="text-align: left;vertical-align: super;text-indent: 1em">a.&nbsp;</td>
+                                            <td>应根据乙方完成的培训课程及相应的成绩和评估情况而定,如乙方完成培训课程包括通过相关考试或评估,则由甲方支付培训费用的 <input disabled="disabled" type="text" size="4" name="companyCoverRate" value='{{$parent.agreement.COMPANY_COVER_RATE}}'  class="input">；</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                            <td>
+                                <div class="col-xs-10 ">
+                                    <table class="marginCn1">
+                                        <tr>
+                                            <td style="text-align: left;vertical-align: super;text-indent: 1em">b.&nbsp;</td>
+                                            <td>如乙方未完成培训课程或未通过相关考试或评估,则由乙方承担全部培训费用。</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr><td class="print_blank" colspan="2">&nbsp;</td></tr>
+                        <tr><td class="print_blank" colspan="2">&nbsp;</td></tr>
+                    </table>
+                    <div class="visible-print-block printFoot" style="text-align: center"><img src="../image/foot.png" alt="" width="860" height="70" ></div>
+                    <div class="visible-print-block PageNext" style="text-align: center"><img src="../image/header.png" width="200" height="110"></div>
+                    <table class="print_table">
+                        <tr><td colspan="2">&nbsp;</td></tr>
+                        <tr><td colspan="2">&nbsp;</td></tr>
+                        <tr><td colspan="2">&nbsp;</td></tr>
+                        <tr >
+                            <td class="td" style="font-size:6mm;">5.&nbsp;&nbsp;</td>
+                            <td>
+                                <div class="col-xs-10">The total cost of Training is <span class="program">{{$parent.agreement.TOTAL_COST}}</span> RMB</div>
+                                <div class="col-xs-10">
+                                    <table class="marginCn1">
+                                        <tr>
+                                            <td class="td"></td>
+                                            <td>
+                                                <div class="" >Cost detail:</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td">&nbsp;&nbsp;</td>
+                                            <td>
+                                                <div class="" style="text-indent: 2em;">Exam Fees:
+                                                    <input disabled="disabled" type="text" name="examFeesEn" size="6" value=''  class="input">RMB
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td">&nbsp;&nbsp;</td>
+                                            <td>
+                                                <div class="" style="text-indent: 2em;">Travel:
+                                                    <input disabled="disabled" type="text" name="travleEn" size="6" value=''  class="input">RMB
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td">&nbsp;&nbsp;</td>
+                                            <td>
+                                                <div class="" style="text-indent: 2em;">Lodging:
+                                                    <input disabled="disabled" type="text" name="lodgingEn" size="6" value=''  class="input">RMB
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td">&nbsp;&nbsp;</td>
+                                            <td>
+                                                <div class="" style="text-indent: 2em;">Other:
+                                                    <input disabled="disabled" type="text" name="otherEn" size="6" value=''  class="input">RMB
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td">&nbsp;&nbsp;</td>
+                                            <td>
+                                                <div style="float: left;">Amount covered by Party A:
+                                                    <span class="program">{{$parent.agreement.COMPANY_COVER}}</span> RMB
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="print_table">
+                        <tr><td colspan="2">&nbsp;</td></tr>
+                        <tr>
+                            <td class="td" style="font-size:6mm;">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                            <td>
+                                <div class="col-xs-10">培训费用总计人民币 <span class="program">{{$parent.agreement.TOTAL_COST_CN}}</span> （大写）。</div>
+                                <div class="col-xs-10">
+                                    <table class="marginCn1">
+                                        <tr>
+                                            <td class="td"></td>
+                                            <td>
+                                                <div class="" >费用：</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td">&nbsp;&nbsp;</td>
+                                            <td>
+                                                <div  style="text-indent: 2em;">&nbsp;&nbsp;学费：
+                                                    <input disabled="disabled" type="text" name="tuitionCn" size="8" value=''  class="input">（大写）。
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td">&nbsp;&nbsp;</td>
+                                            <td>
+                                                <div  style="text-indent: 2em;">&nbsp;&nbsp;考试费：
+                                                    <input disabled="disabled" type="text" name="examFeesCn" size="8" value=''  class="input">（大写）。
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td">&nbsp;&nbsp;</td>
+                                            <td>
+                                                <div style="text-indent: 2em;" >&nbsp;&nbsp;交通费：
+                                                    <input disabled="disabled" type="text" name="travleCn" size="8" value=''  class="input"/>（大写）。
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td">&nbsp;&nbsp;</td>
+                                            <td>
+                                                <div style="text-indent: 2em;">其他费用：
+                                                    <input disabled="disabled" type="text" name="otherCn" size="8" value=''  class="input">（大写）。
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td">&nbsp;&nbsp;</td>
+                                            <td>
+                                                <div style="float: left;">甲方承担的培训费用：
+                                                    <span class="program">{{$parent.agreement.COMPANY_COVER_CN}}</span>（大写）。
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="print_table">
+                        <tr><td colspan="2">&nbsp;</td></tr>
+                        <tr><td colspan="2">&nbsp;</td></tr>
+                        <tr >
+                            <td class="td" style="font-size:6mm;">6.&nbsp;&nbsp;</td>
+                            <td>
+                                <div class="col-xs-10">Party A has the right to cancel Party B’s training assignment, and release all liability to Party B. Party B agrees to pay back all the training costs covered by Party A as defined in Section 5 if Party B violates Party A’s company discipline, policy, regulation, or the training country’s laws and relevant regulations.
+                                </div>
+                                <div class="col-xs-10 marginCn" style="margin-left: 13px;">甲方有权取消乙方的培训安排，同时免除对乙方所负的责任。如果乙方违反了甲方的公司纪律、制度、规定或是培训地国家的法律和相关规定，而导致甲方中断和取消培训安排，乙方同意偿还甲方在第5条列出的甲方承担的培训费用。
+                                </div>
+                            </td>
+                        </tr>
+                        <tr><td colspan="2">&nbsp;</td></tr>
+                        <tr><td class="print_blank" colspan="2">&nbsp;</td></tr>
+                        <tr><td class="print_blank" colspan="2">&nbsp;</td></tr>
+                        <tr><td class="print_blank" colspan="2">&nbsp;</td></tr>
+                        <tr><td class="print_blank" colspan="2">&nbsp;</td></tr>
+                    </table>
+                    <div class="visible-print-block printFoot" style="text-align: center"><img src="../image/foot.png" width="860" height="70" ></div>
+                    <div class="visible-print-block PageNext" style="text-align: center"><img src="../image/header.png" width="200" height="110"></div>
+                    <table class="print_table">
+                        <tr>
+                            <td class="td" style="font-size:6mm;">7.&nbsp;&nbsp;</td>
+                            <td>
+                                <div class="col-xs-10">Party B agrees to compensate Party A for the cost of training under the following circumstances:
+                                </div>
+                                <div class="col-xs-10">
+                                    <table class="marginCn1">
+                                        <tr >
+                                            <td class="td_first">a.</td>
+                                            <td>If Party B terminates their employment with Party A during the Training period, Party B will be responsible for 100% of the training costs;
+                                            </td>
+                                        </tr>
+                                        <tr class="marginCn1">
+                                            <td  class="td_first">b.</td>
+                                            <td>If Party B terminates their employment with Party A within the service period after completing the Training, Party B must be responsible for the training costs according to section 8;</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="print_table">
+                        <tr>
+                            <td class="td" style="font-size:6mm;">&nbsp;&nbsp;&nbsp;</td>
+                            <td>
+                                <div class="col-xs-10 marginCn">乙方同意在以下情况下向甲方偿还培训费用：
+                                </div>
+                                <div class="col-xs-10">
+                                    <table class="marginCn1">
+                                        <tr >
+                                            <td  class="td_first">a.</td>
+                                            <td>乙方在培训期间终止了与甲方签订的就业合同,乙方必须向甲方偿还全部的培训费用。</td>
+                                        </tr>
+                                        <tr class="marginCn1">
+                                            <td  class="td_first">b.</td>
+                                            <td>乙方在培训结束后未能完成规定服务期限内终止了与甲方签订的就业合同, 乙方按照未服务时间占本协议所规定的服务期限的比例偿还部分的培训费用（见第8条）。</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr><td colspan="2">&nbsp;</td></tr>
+                        <tr><td colspan="2">&nbsp;</td></tr>
+                        <tr>
+                            <td class="td" style="font-size:6mm;">8.&nbsp;&nbsp;</td>
+                            <td>
+                                <div class="col-xs-10">Party B agrees to work for Party A for twelve (12) months from  <input disabled="disabled" type="text" value='{{$parent.agreement.SERVICE_PERIOD_FROM}}'  class="input">, If Party B terminates their employment within the above mentioned service period, they will reimburse Party A the straight line value  of the training costs paid by Party A for the months remaining in the twelve (12) month period. (Formula: Total cost which was covered by Part A /working days in 1 year amortization * number of working days remaining)
+                                </div>
+                                <div class="col-xs-10 marginCn1" >乙方同意自<input disabled="disabled" type="text" value='{{$parent.agreement.SERVICE_PERIOD_FROM}}'  class="input">起为甲方工作十二（12）个月；如果乙方未能完成上述服务期限，应按比例赔付甲方的培训费用。赔付比例是未服务时间占本协议所规定的服务期限的比例。(计算公式：甲方支付总额/一年服务期内工作日数*剩余工作日数)。
+                                </div>
+                            </td>
+                        </tr>
+                        <tr><td colspan="2">&nbsp;</td></tr>
+                        <tr><td colspan="2">&nbsp;</td></tr>
+                        <tr>
+                            <td class="td" style="font-size:6mm">9.&nbsp;&nbsp;</td>
+                            <td>
+                                <div class="col-xs-10">If  Party B violates this Agreement and fails to compensate Party A for the training expenses, Party A is entitled to take legal actions (such as ask for arbitration, suit in court and retaining Party B’s salary/bonus) to reduce losses.
+                                </div>
+                                <div class="col-xs-10 marginCn1" >如果乙方违反本协议且不偿还培训费用，甲方有权采取法律行为（如请求仲裁，诉讼，扣留乙方工资/奖金）以减低损失。
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="visible-print-block printFoot" style="text-align: center"><img src="../image/foot.png" alt="" width="860" height="70" ></div>
+                    <div class="visible-print-block PageNext" style="text-align: center"><img src="../image/header.png" width="200" height="110"></div>
+                    <table class="print_table">
+                        <tr><td colspan="2" >&nbsp;</td></tr>
+                        <tr><td colspan="2" >&nbsp;</td></tr>
+                        <tr >
+                            <td class="td" style="font-size:6mm">10.</td>
+                            <td>
+                                <div class="col-xs-10">Any terms not covered in this Agreement shall be governed by the related sections of the Party A Employment Handbook and the laws and regulations of the PRC, Zhejiang Province, Hangzhou.
+                                </div>
+                                <div class="col-xs-10 marginCn1" >没有在本协议中提到的事项受中华人民共和国、浙江省、杭州市的相关法律和甲方员工手册规范。如本协议中有任何规定与法律和规定冲突，服从法律规定。
+                                </div>
+                            </td>
+                        </tr>
+                        <tr><td colspan="2" >&nbsp;</td></tr>
+                        <tr><td colspan="2" >&nbsp;</td></tr>
+                        <tr >
+                            <td class="td" style="font-size:6mm">11.</td>
+                            <td>
+                                <div class="col-xs-10">In the event that any provision of this Agreement conflicts with any law or regulation, the law or regulation shall take precedence. In the event
+                                </div>
+                                <div class="col-xs-10">that a provision in this Agreement is judged to be invalid by Hangzhou Arbitration Commission or any other body of competent jurisdiction, the provision shall not affect the validity or enforceability of the remaining ones.
+                                </div>
+                                <div class="col-xs-10 marginCn1" >如本协议中的有些条款被有管辖权的劳动仲裁委员会或法院判定无效，并不影响本协议其他条款的有效性或可实施性。
+                                </div>
+                                <div>&nbsp;</div>
+                            </td>
+                        </tr>
+                        <tr><td colspan="2" >&nbsp;</td></tr>
+                        <tr><td colspan="2" >&nbsp;</td></tr>
+                        <tr >
+                            <td class="td" style="font-size:6mm">12.</td>
+                            <td>
+                                <div class="col-xs-10">In the event of any conflict between any term of this Agreement and any term of any other agreement related to the Training, either written or oral, the clauses of this Agreement shall prevail.
+                                </div>
+                                <div class="col-xs-10 marginCn1" >如果本协议的有些条款与其他任何与培训有关的协议的任何条款有直接冲突，以本协议条款为准。
+                                </div>
+                            </td>
+                        </tr>
+                        <tr><td colspan="2">&nbsp;</td></tr>
+                        <tr><td colspan="2" >&nbsp;</td></tr>
+                        <tr >
+                            <td class="td" style="font-size:6mm">13.</td>
+                            <td>
+                                <div class="col-xs-10">This Agreement is signed in two (2) originals. Each Party A and Party B shall receive one (1) copy.
+                                </div>
+                                <div class="col-xs-10 marginCn1" >本协议原件签署两份，甲方和乙方各执一份。
+                                </div>
+                            </td>
+                        </tr>
+                        <tr><td colspan="2" >&nbsp;</td></tr>
+
+                    </table>
+                    <div class="temp">&nbsp;</div>
+                    <table>
+                        <tr >
+                            <td class="td" style="font-size:6mm">14.</td>
+                            <td>
+                                <div class="col-xs-10">Should there be any conflict between the Chinese and English provisions of this Agreement the Chinese provision shall prevail.
+                                </div>
+                                <div class="col-xs-10 marginCn1" >如协议的中文版本与英文版本有差异，以中文版本为准。
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="visible-print-block printFoot" style="text-align: center"><img src="../image/foot.png" alt="" width="860" height="70" ></div>
+                    <div class="visible-print-block PageNext" style="text-align: center"><img src="../image/header.png" width="200" height="110"></div>
+                    <table class="print_table">
+                        <tr><td class="print_blank" colspan="2" >&nbsp;</td></tr>
+                        <tr><td class="print_blank" colspan="2" >&nbsp;</td></tr>
+                    </table>
+                    <div class="row" style="margin-top: 20mm;">
+                        <div class="col-xs-12"><div class="col-xs-6">甲方：博克软件（杭州）有限公司</div>
+                            <div class="col-xs-6">乙方：{{$parent.agreement.CHINESE_NAME}}</div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12"><div class="col-xs-6">Party A: Perficient (China) Ltd.</div>
+                            <div class="col-xs-6">Party B: {{$parent.agreement.EMP_NAME}}</div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-xs-12"><div class="col-xs-6">Signed on behalf of Company:</div>
+                            <div class="col-xs-6">Signed on behalf of Employee：  </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-10" style="margin-left: 7px;">
+                            <div>&nbsp;&nbsp;授权代表：</div><div><img src="../image/name.png" alt="" width="350" height="50" style="margin-left: 2mm"></div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="col-xs-6">日期：{{$parent.agreement.CREATE_DATE}}</div>
+                            <div class="col-xs-6" style=""> 日期 : {{$parent.agreement.CREATE_DATE}}</div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12"><div class="col-xs-6">Date:&nbsp;&nbsp;{{$parent.agreement.CREATE_DATE}}</div>
+                            <div class="col-xs-6">Date:&nbsp;&nbsp;{{$parent.agreement.CREATE_DATE}}</div>
+                        </div>
+                    </div>
+                    <div class="visible-print-block printFootFinal" style="text-align: center;"><img src="../image/foot.png" alt="" width="860" height="70" ></div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: -1%;">
+            <div class="btn-group col-xs-8">
+            </div>
+
+            <div class="btn-group col-xs-1" style="float:right;margin-right:20px">
+                <button type="button" class="btn btn-default btn-xs" ng-click="cancelAgreement()" >&nbsp;cancel&nbsp;</button>
+            </div>
+        </div>
+
+
+    </form>
+</div>

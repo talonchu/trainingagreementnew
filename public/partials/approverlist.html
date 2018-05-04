@@ -1,0 +1,162 @@
+<div class="row bs-docs-example" id="examp">
+    <div ng-controller="MyController" class="my-controller">
+        <div class="col-xs-12" style="margin-bottom: 10px; margin-top: 10px;">
+            <ul class="nav nav-tabs" role="tablist" id="employeelistselecttab">
+                <li role="presentation" id="emplisttab_pending" style="margin-left: 10px;"><a href="javascript:void(0);" ng-click="approverPending()" style=" padding-left: 20px; padding-right: 20px;">My Workflow</a></li>
+                <li role="presentation" id="emplisttab_approved" style="margin-left: 10px;"><a href="javascript:void(0);" ng-click="approverApproved()" style=" padding-left: 20px; padding-right: 20px;">Approved History</a></li>
+            </ul>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <label for="search">Search:</label>
+                        <input ng-model="q" id="search" class="form-control" placeholder="Filter text">
+                        <a href="javascript:void(0)" class="clear" ng-click="clear()"></a>
+                    </div>
+                </div>
+
+                <ul>
+                    <!--<li dir-paginate="meal in meals | filter:q | itemsPerPage: pageSize" current-page="currentPage">{{ meal }}</li>-->
+                    <table  class="table"  style="background-color:#ffffff; margin-bottom: 0px;">
+
+                        <thead id="theademployee" >
+                        <tr >
+                            <th id="th_name" class="th_name"><div class="table-font">Name</div></th>
+                            <th id="th_pro" class="th_pro"><div class="table-font">Training Program</div></th>
+                            <th id="th_tot" class="th_tot"><div class="table-font">Total Cost</div></th>
+                            <th id="th_com" class="th_com"><div class="table-font">Company Cover</div></th>
+                            <th id="th_sta" class="th_sta"><div class="table-font">Service Start</div></th>
+                            <th id="th_end" class="th_end"><div class="table-font">Service End</div></th>
+                            <th id="th_stat" class="th_stat"><div class="table-font">Status</div></th>
+                        </tr>
+                        </thead>
+                    </table >
+                    <div  id="tbodyemployee" style="overflow: hidden; margin-top: 0px; height: 650px;">
+                        <div class="tbodyemployeechild" dir-paginate="member in meals | filter:q | itemsPerPage: pageSize" current-page="currentPage" title="Double Click To Show More" ng-dblclick="showEditAgreement(member._id, member.EMP_NAME, member.TRAINING_PROGRAM,member.STATUS)">
+                            <table class="table tbody-font" style="position:relative;margin-bottom: 0xp;">
+                                <tr class="employee" id="{{member._id}}" style="text-align: center;">
+                                    <td class="th_name" ng-bind="member.EMP_NAME"></td>
+                                    <td class="th_pro">
+                                        <p style="width:230px; white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis;overflow: hidden; " title={{member.TRAINING_PROGRAM}}  ng-bind="member.TRAINING_PROGRAM" id="emptp_{{member._id}}">
+                                        </p></td>
+                                    <td class="th_tot" ng-bind="member.TOTAL_COST"></td>
+                                    <td class="th_com" ng-bind="member.COMPANY_COVER"></td>
+                                    <td class="th_sta" ng-bind="member.SERVICE_PERIOD_FROM"></td>
+                                    <td class="th_end" ng-bind="member.SERVICE_PERIOD_TO"></td>
+                                    <td class="th_stat" ng-bind="member.STATUS"></td>
+
+                                </tr>
+                            </table>
+
+                            <div id="editAgreementPanel{{member._id}}" class="agreementPanel" style="display:none;">
+                                <div style="margin-left: 110px;">
+                                    <div class="row" style="margin-top:30px;margin-left: 30px;" >
+                                        <form class="form-horizontal">
+                                            <div class="row" id="warning" style="display: none;">
+                                                <div class="col-xs-10">
+                                                    <div class="alert alert-warning" role="alert">
+                                                        <span id="msg"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-xs-2" style="margin-left:1px" ><p>&nbsp;Applicant:</p></div>
+                                                <div class="col-xs-3"><p id="EMP_NAME{{member._id}}" ng-bind="member.EMP_NAME"/></div>
+                                                <div class="col-xs-2"><p style="margin-left: 40px">&nbsp;Employee&nbsp;ID:</p></div>
+                                                <div class="col-xs-3"><p ng-bind="member.EMP_ID"/></div>
+                                            </div>
+
+                                            <div class="row" style="margin-top: 20px">
+                                                <div class="col-xs-2" >&nbsp;Chinese&nbsp;Name:</div>
+                                                <div class="col-xs-3"><p ng-bind="member.CHINESE_NAME"/></div>
+                                                <div class="col-xs-2"><span style="margin-left: 40px">&nbsp;ID&nbsp; Number:</span></div>
+                                                <div class="col-xs-3"><p ng-bind="member.IDENTIFICATION"/></div>
+                                            </div>
+
+                                            <div class="row" style="margin-top: 20px">
+                                                <div class="col-xs-2">&nbsp;Training Organization:</div>
+                                                <div class="col-xs-3"><p ng-bind="member.TRAINING_INSTITUTION"/></div>
+                                            </div>
+
+                                            <div class="row" style="margin-top: 20px">
+                                                <div class="col-xs-2">&nbsp;Training Program:</div>
+                                                <div class="col-xs-3"><p ng-bind="member.TRAINING_PROGRAM"/></div>
+                                            </div>
+
+                                            <div class="row" style="margin-top: 20px">
+                                                <div class="col-xs-2">&nbsp;Total&nbsp;Cost:</div>
+                                                <div class="col-xs-3"><p ng-bind="member.TOTAL_COST"/></div>
+                                                <div class="col-xs-2">&nbsp;Company&nbsp;Cover:</div>
+                                                <div class="col-xs-3"><p ng-bind="member.COMPANY_COVER"/></div>
+                                            </div>
+
+                                            <div class="row" style="margin-top: 20px">
+                                                <div class="col-xs-2">&nbsp;Training&nbsp;Period:</div>
+                                                <div class="col-xs-3">
+                                                    <span ng-bind="member.TRAINING_PERIOD_FROM"/></span>&nbsp;-&nbsp;
+                                                    <span ng-bind="member.TRAINING_PERIOD_TO"/></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="row" style="margin-top: 20px">
+                                                <div class="col-xs-2">&nbsp;Service&nbsp;Period:</div>
+                                                <div class="col-xs-3">
+                                                    <span ng-bind="member.SERVICE_PERIOD_FROM"/></span>&nbsp;-&nbsp;
+                                                    <span ng-bind="member.SERVICE_PERIOD_TO"/></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="row" style="margin-top: 20px">
+                                                <div class="col-xs-2">&nbsp;Justification:</div>
+                                                <div class="col-xs-3"><p ng-bind="member.REASON"/></div>
+                                            </div>
+
+                                            <div class="row" style="margin-top: 20px">
+                                                <div class="col-xs-2">&nbsp;Comment:</div>
+                                                <div class="col-xs-8">
+                                                    <textarea class="form-control input-sm" id="text{{member._id}}" maxlength="500" rows="3" cols="20" ng-model="member.COMMENTS"></textarea>
+                                                </div>
+                                            </div>
+
+                                            <fieldset class="row" style="margin-top: 20px">
+                                                <div style="border-bottom: 1px solid #ddd;margin-left: 18px"><strong>Supporting Documents</strong></div>
+                                                <ul style="list-style-type: none;margin-top: 20px">
+                                                    <li ng-repeat="file in picFile" style="font:smaller;">
+                                                        <a href="javascript:void(0)" ng-click="viewFile(this)">{{file}}</a>
+                                                    </li>
+                                                </ul>
+                                            </fieldset>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>Total Records: <span id="totalRecords"></span></div>
+                    <div class="other-controller">
+                        <div class="text-center">
+                            <dir-pagination-controls boundary-links="true" template-url="/partials/dirPagination.tpl.html"></dir-pagination-controls>
+                        </div>
+                    </div>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+<!--<div id='empCount' style=" height: 20px; width: 150px;margin-top: 10px;">Count&nbsp; :&nbsp;{{AllSum}} &nbsp;rows</div>
+<ul class="pagination" id="dividePage">
+    Current:{{pageNumber}},Total:{{totalPage}} &nbsp;
+    <li><input type="button" value="First" ng-click="firstPage()" id="firstPageBtn"></input></li>
+    <li><input type="button" value="Previous" ng-click="prevPage()" id="prevPageBtn"></input></li>
+    <li><input type="button" value="Next" ng-click="nextPage()" id="nextPageBtn"></input></li>
+    <li><input type="button" value="Last" ng-click="lastPage()" id="lastPageBtn"></input></li>
+</ul>
+</div>-->
+</div>

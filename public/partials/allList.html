@@ -1,0 +1,404 @@
+<div ng-controller="MyController" class="row bs-docs-example" id="examp">
+    <div class="col-xs-12" style="margin-bottom: 10px; margin-top: 10px;">
+        <ul class="nav nav-tabs" role="tablist" id="employeelistselecttab">
+            <li role="presentation" id="admin_sub" style="margin-left: 10px;"><a href="javascript:void(0);"
+                                                                                            ng-click="adminsub()"
+                                                                                            style=" padding-left: 20px; padding-right: 20px;">Submitted</a>
+            </li>
+            <li role="presentation" id="admin_inp" style="margin-left: 10px;"><a href="javascript:void(0);"
+                                                                                             ng-click="admininp()"
+                                                                                             style=" padding-left: 20px; padding-right: 20px;">In Progress</a></li>
+            <li role="presentation" id="admin_act" style="margin-left: 10px;"><a href="javascript:void(0);"
+                                                                                         ng-click="adminact()"
+                                                                                         style=" padding-left: 20px; padding-right: 20px;">Active</a>
+            </li>
+            <li role="presentation" id="admin_all" style="margin-left: 10px;"><a href="javascript:void(0);"
+                                                                                      ng-click="adminall()"
+                                                                                      style=" padding-left: 20px; padding-right: 20px;">All</a>
+            </li>
+            <!--<li role="presentation" id="sys_config" style="float: right">
+                <p>
+                    <button type="button" class="btn btn-default btn-sm" ng-click="sysConfig()">
+                        <span class="glyphicon glyphicon-cog"></span> Preference
+                    </button>
+                </p>
+            </li>-->
+            <li role="presentation" class="" id="agreetab" style="display: none;margin-left: 10px;"><a
+                    href="javascript:void(0);" style=" padding-left: 20px; padding-right: 20px;">View Agreement</a></li>
+        </ul>
+
+    </div>
+
+    <div class="col-xs-12">
+        <div class="employeelist" style="display: block;" id='employeelist'>
+        <div class="row">
+            <div class="col-xs-4">
+                <label for="search">Search:</label>
+                <input ng-model="q" id="search" class="form-control" placeholder="Filter text">
+                <a href="javascript:void(0)" class="clear" ng-click="clear()"></a>
+            </div>
+            <div class="col-xs-6"></div>
+            <div class="col-xs-2">
+                <div style="float:right">
+                    <button id="export" style="width:83px;" ng-click="exportExcel(meals)">Export</button>
+                </div>
+            </div>
+        </div>
+        <table class="table" style="background-color:#ffffff; margin-bottom: 0px;">
+
+            <thead id="theademployee">
+            <tr>
+                <th id="th_name" class="th_name">
+                    <div class="table-font">Name</div>
+                </th>
+                <th id="th_pro" class="th_pro">
+                    <div class="table-font">Training Program</div>
+                </th>
+                <th id="th_tot" class="th_tot">
+                    <div class="table-font">Total Cost</div>
+                </th>
+                <th id="th_com" class="th_com">
+                    <div class="table-font">Company Cover</div>
+                </th>
+                <th id="th_sta" class="th_sta">
+                    <div class="table-font">Service Start</div>
+                </th>
+                <th id="th_end" class="th_end">
+                    <div class="table-font">Service End</div>
+                </th>
+                <th id="th_stat" class="th_stat">
+                    <div class="table-font">Status</div>
+                </th>
+                <th id="th_action" class="th_action">
+                    <div class="table-font">Action</div>
+                </th>
+            </tr>
+            <tr style="text-align: center;">
+                <th class="th_name">
+                    <div class="table-font"><input ng-model="name" type="text" style="width: 60%"></div>
+                </th>
+                <th class="th_pro">
+                    <div class="table-font"><input ng-model="program" type="text" style="width: 60%"></div>
+                </th>
+                <th class="th_tot">
+                    <div class="table-font"><input ng-model="totalCost" type="text" style="width: 60%"></div>
+                </th>
+                <th class="th_com">
+                    <div class="table-font"><input ng-model="com_cover" ng-change="filter()" type="text" style="width: 60%"></div>
+                </th>
+                <th class="th_sta">
+                    <div class="table-font"><input id="filter_th_sta" ng-model="th_sta" ng-change="filter()" type="text" style="width: 70%"></div>
+                </th>
+                <th class="th_end">
+                    <div class="table-font"><input id="filter_th_end" ng-model="th_end" ng-change="filter()" type="text" style="width: 70%"></div>
+                </th>
+                <th class="th_stat">
+                    <div class="table-font"><input ng-model="status" type="text" style="width: 60%"></div>
+                </th>
+
+                <th class="th_action"><div class="table-font"></div></th>
+
+                </th>
+            </tr>
+            </thead>
+        </table>
+        <div id="tbodyemployee" style="overflow: hidden; margin-top: 0px; height: 650px;">
+            <div class="tbodyemployeechild" dir-paginate="member in filterResults | filter:{EMP_NAME:name,TRAINING_PROGRAM:program,TOTAL_COST:totalCost,STATUS:status} | itemsPerPage: pageSize" current-page="currentPage">
+                <table class="table tbody-font" style="position:relative;margin-bottom: 0xp;">
+                    <tr class="employee" id="{{member._id}}" style="text-align: center;">
+                        <td class="th_name" ng-bind="member.EMP_NAME" ng-dblclick="detailView(member._id)"
+                            ng-click="focusme(member._id)"></td>
+                        <td class="th_pro" ng-dblclick="detailView(member._id)" ng-click="focusme(member._id)">
+                            <p style="width:230px; white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis;overflow: hidden; "
+                               title={{member.TRAINING_PROGRAM}} ng-bind="member.TRAINING_PROGRAM"
+                               id="emptp_{{member._id}}">
+                            </p></td>
+                        <td class="th_tot" ng-bind="member.TOTAL_COST" ng-dblclick="detailView(member._id)"
+                            ng-click="focusme(member._id)"></td>
+                        <td class="th_com" ng-bind="member.COMPANY_COVER" ng-dblclick="detailView(member._id)"
+                            ng-click="focusme(member._id)"></td>
+                        <td class="th_sta" ng-bind="member.SERVICE_PERIOD_FROM" ng-dblclick="detailView(member._id)"
+                            ng-click="focusme(member._id)"></td>
+                        <td class="th_end" ng-bind="member.SERVICE_PERIOD_TO" ng-dblclick="detailView(member._id)"
+                            ng-click="focusme(member._id)"></td>
+                        <td class="th_stat" ng-bind="member.STATUS" ng-dblclick="detailView(member._id)"
+                            ng-click="focusme(member._id)"></td>
+
+                        <td class="th_action">
+                            <span ng-if="member.STATUS == 'Submitted'"><a class="empAg_{{member.certification}}"
+                                                                          title="Edit"
+                                                                          ng-click="showEditAgreement(member._id, $index, member.EMP_NAME,member)"
+                                                                          style="cursor:pointer;color: black;"><span
+                                    class="glyphicon glyphicon-pencil"></span></a></span>
+
+                            <span ng-if="member.STATUS == 'Pending'"><a class="empAg_{{member.certification}}" title="Agreement" style="cursor:pointer;color: black" ng-click="checkAgreement(member)"><span class="glyphicon glyphicon-file"></span></a></span>
+                            <span ng-if="member.STATUS == 'Approved'">
+                                <a class="empAg_{{member.certification}}" title="Agreement" style="cursor:pointer;color: black" ng-click="checkAgreement(member)"><span class="glyphicon glyphicon-file"></span></a>
+                                <a class="empAg_{{member.certification}}" id="finish_btn_{{member._id}}" title="Finish This Item" ng-click="passID(member._id)" style="cursor:pointer;color: black"  data-toggle="modal" data-target="#myModal">| <span class="glyphicon glyphicon-ok"></span></a>
+                            </span>
+                            <span ng-if="member.STATUS == 'Finished'">
+                                <a class="empAg_{{member.certification}}" title="Agreement" style="cursor:pointer;color: black" ng-click="checkAgreement(member)"><span class="glyphicon glyphicon-file"></span></a>
+                                <a class="empAg_{{member.certification}}" title="Calculate the refund" style="cursor:pointer;color: black" ng-click="calculate(member)">| <span class="glyphicon glyphicon-list-alt"></span></a>
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+                <input id="storeID" type="hidden"/>
+                <!--Modal-->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">
+                                    Finish Confirm
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                Do you want to finish it?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">No
+                                </button>
+                                <button type="button" class="btn btn-primary" ng-click="finishItem()">
+                                    Yes
+                                </button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal -->
+                </div>
+
+                <!--Calculate Panel Start-->
+                <div id="calculatePanel{{member._id}}" style="display:none;overflow-x: hidden;">
+                    <div class="row" style="margin-top: 20px">
+                        <div class="col-xs-3">Service&nbsp;Period</div>
+                        <div class="col-xs-5">
+                            <div class="input-group">
+                                <input class="form-control input-sm" style="width: 120px;"
+                                       id="servicePeriodFrom_cal_{{member._id}}"
+                                       ng-model="member.SERVICE_PERIOD_FROM"
+                                       ng-readonly="true"/>
+                                <span class="input-group-addon" style="border: 0px;">-</span>
+                                <input class="form-control input-sm" style="width: 120px;"
+                                       id="servicePeriodTo_cal_{{member._id}}"
+                                       ng-model="member.SERVICE_PERIOD_TO"
+                                       ng-readonly="true"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 20px">
+                        <div class="col-xs-3">Please Select A Date</div>
+                        <div class="col-xs-5">
+                            <div class="input-group">
+                                <input class="form-control input-sm" style="background-color: white;width: 120px;"
+                                       id="separationDate_{{member._id}}"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 20px">
+                        <div class="col-xs-3">Company Cover Fee</div>
+                        <div class="col-xs-5">
+                            <div class="input-group">
+                                <input class="form-control input-sm" style="width: 185px;"
+                                       id="companyCover_{{member._id}}"
+                                       ng-model="member.COMPANY_COVER"
+                                       ng-readonly="true"/><span class="input-group-addon">CNY</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 20px">
+                        <div class="col-xs-3">Refund Fee</div>
+                        <div class="col-xs-5">
+                            <div class="input-group">
+                                <input class="form-control input-sm" style="width: 185px;"
+                                       id="refundFee_{{member._id}}"
+                                       ng-readonly="true"/><span class="input-group-addon">CNY</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 20px">
+                        <div class="col-xs-12">* Refund Fee = (Workdays(ServiceEndDate-LeaveDate)/Workdays(ServiceEndDate-ServiceStartDate))*CompanyCover.</div>
+                    </div>
+                    <div class="row" style="margin-top: 20px">
+                        <div class="col-xs-8">* Send: Click the button and send the refund to HR.</div>
+                    </div>
+                </div>
+                <!--Calculate Panel End-->
+
+                <div id="editAgreementPanel{{member._id}}" class="agreementPanel" style="display:none;">
+                    <div style="margin-left: 110px;">
+                        <div class="row" style="margin-top:30px;margin-left: 30px;">
+                            <form class="form-horizontal">
+                                <div class="row" id="warningAlert{{member._id}}" style="display: none;">
+                                    <div class="col-xs-10">
+                                        <div class="alert alert-warning" role="alert">
+                                            <span id="warningMsg{{member._id}}"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-2" style="margin-left:1px"><p>&nbsp;Applicant</p></div>
+                                    <div class="col-xs-3"><p id="EMP_NAME{{member._id}}" ng-bind="member.EMP_NAME"/></div>
+                                    <div class="col-xs-2"><p style="margin-left: 40px">&nbsp;Employee&nbsp;ID</p></div>
+                                    <div class="col-xs-3"><p ng-bind="member.EMP_ID"/></div>
+                                </div>
+
+                                <div class="row" style="margin-top: 20px">
+                                    <div class="col-xs-2">&nbsp;Chinese&nbsp;name</div>
+                                    <div class="col-xs-3">
+                                        <input ng-readonly="true" class="form-control input-sm"
+                                               ng-change="checkChineseName(member.CHINESE_NAME)" id="chineseName"
+                                               ng-model="member.CHINESE_NAME"/>
+                                    </div>
+                                    <div class="col-xs-2"><span style="margin-left: 40px">&nbsp;ID&nbsp; number</span>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <input ng-readonly="true" class="form-control input-sm"
+                                               ng-change="checkIdNumber(member.IDENTIFICATION)" id="idNumber"
+                                               ng-model="member.IDENTIFICATION" maxlength="18"/>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-top: 20px">
+                                    <div class="col-xs-2">&nbsp;Training organization</div>
+                                    <div class="col-xs-8">
+                                        <input ng-readonly="true" class="form-control input-sm"
+                                               id="trainingOrganization" ng-model="member.TRAINING_INSTITUTION"/>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-top: 20px">
+                                    <div class="col-xs-2">&nbsp;Training&nbsp;program</div>
+                                    <div class="col-xs-8">
+                                        <div class="input-group">
+                                            <div class="input-group-btn">
+                                                <input ng-readonly="true" class="form-control input-sm"
+                                                       ng-model="member.TRAINING_PROGRAM"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-top: 20px">
+                                    <div class="col-xs-2">&nbsp;Total&nbsp;cost</div>
+                                    <div class="col-xs-3">
+                                        <div class="input-group">
+                                            <input ng-readonly="true" class="form-control input-sm" id="totalCost"
+                                                   ng-model="member.TOTAL_COST"
+                                                   ng-change="checkMoney(member.TOTAL_COST,member.COMPANY_COVER)"
+                                                   onchange="IsFloat(this);this.value = AngelMoney(this.value)"/>
+                                            <span class="input-group-addon" style="">CNY</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-2"><span
+                                            style="margin-left: 40px">*&nbsp;Company&nbsp;cover</span></div>
+                                    <div class="col-xs-3">
+                                        <div class="input-group">
+                                            <select class="form-control input-sm" id="companyCover{{member._id}}" ng-model="application.COMPANY_COVER"></select>
+                                            <span class="input-group-addon">CNY</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-top: 20px">
+                                    <div class="col-xs-2">&nbsp;Training&nbsp;Period</div>
+                                    <div class="col-xs-5">
+                                        <div class="input-group">
+                                            <input class="form-control input-sm" id="trainingPeriodFrom{{member._id}}"
+                                                   ng-model="member.TRAINING_PERIOD_FROM" ng-readonly="true"/>
+                                            <span class="input-group-addon" style="border: 0px;">-</span>
+                                            <input class="form-control input-sm" id="trainingPeriodTo{{member._id}}"
+                                                   ng-model="member.TRAINING_PERIOD_TO"
+                                                   ng-change="trainingPeriodTo(member.TRAINING_PERIOD_TO)"
+                                                   ng-readonly="true"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-top: 20px">
+                                    <div class="col-xs-2">*&nbsp;Period&nbsp;of&nbsp;validity</div>
+                                    <div class="col-xs-3">
+                                        <select id="setperiod{{member._id}}"
+                                                ng-change="periodValidityChange(member, $index)"
+                                                ng-init="selectedType = initSelectPeriod(member.TRAINING_PERIOD_TO, member.SERVICE_PERIOD_TO)"
+                                                ng-model="selectedType" style="width:190px;padding: 0 50px;">
+                                            <option ng-repeat="x in periodType" value="{{x.value}}">{{x.text}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                <div class="row" style="margin-top: 20px">
+                                    <div class="col-xs-2">*&nbsp;Service&nbsp;Period</div>
+                                    <div class="col-xs-5">
+                                        <div class="input-group">
+                                            <input class="form-control input-sm" style="background-color: white"
+                                                   id="servicePeriodFrom{{member._id}}"
+                                                   ng-model="member.SERVICE_PERIOD_FROM"
+                                                   ng-change="periodValidityChange(member)"/>
+                                            <span class="input-group-addon" style="border: 0px;">-</span>
+                                            <input class="form-control input-sm" id="servicePeriodTo{{member._id}}"
+                                                   ng-model="member.SERVICE_PERIOD_TO"
+                                                   ng-readonly="true"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-top: 20px">
+                                    <div class="col-xs-2">&nbsp;Create Date</div>
+                                    <div class="col-xs-3"><p id="{{member.CREATE_DATE}}" ng-bind="member.CREATE_DATE" /></div>
+                                </div>
+
+                                <div class="row" style="margin-top: 20px">
+                                    <div class="col-xs-2">&nbsp;Justification</div>
+                                    <div class="col-xs-8">
+                                        <textarea class="form-control input-sm" maxlength="500" rows="3" cols="20"
+                                                  ng-model="member.REASON" ng-readonly="true"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-top: 20px">
+                                    <div class="col-xs-2">&nbsp;Comment</div>
+                                    <div class="col-xs-8">
+                                        <textarea class="form-control input-sm" id="comments{{member._id}}" maxlength="500" rows="3" cols="20"
+                                                  ng-model="member.COMMENTS"></textarea>
+                                        <div style="line-height: 30px;"><span
+                                                ng-bind="commentCharactersLeft('{{member._id}}')"></span> characters remaining.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <fieldset class="row" style="margin-top: 20px">
+                                    <div style="border-bottom: 1px solid #ddd;margin-left: 18px"><strong>Support
+                                        Documents</strong></div>
+                                    <ul style="list-style-type: none;margin-top: 20px">
+                                        <li ng-repeat="x in records" style="font:smaller;">
+                                            <a href="javascript:void(0)" ng-click="viewFile(this)">{{x}}</a>
+                                        </li>
+                                    </ul>
+                                </fieldset>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>Total Records: <span id="totalRecords"></span></div>
+        <div class="other-controller">
+            <div class="text-center">
+                <dir-pagination-controls boundary-links="true" template-url="/partials/dirPagination.tpl.html"></dir-pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- Three Agreement Templates -->
+    <div class="employeelist" id="agreement50" style="display: none" ng-include="'/partials/agreementView_Half.html'"></div>
+    <div class="employeelist" id="agreement100" style="display: none" ng-include="'/partials/agreementView_All.html'"></div>
+    <div class="employeelist" id="agreementAgile" style="display: none" ng-include="'/partials/agreementAgile.html'"></div>
+
+</div>

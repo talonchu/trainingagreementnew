@@ -1,0 +1,96 @@
+<div ng-controller="SystemConfigCtrl" id="examp">
+    <!--admin list-->
+    <table width="100%" border="1">
+        <tr>
+            <th style="text-align: center">Admin List</th>
+            <th style="text-align: center">Operate</th>
+        </tr>
+        <tr ng-repeat="admin in adminlist">
+            <td>
+                <input placeholder="Employee Name" style="border: none;margin-left: 45%" type="text" ng-model="admin.name" ng-readonly="admin.readonly" value={ {admin.name}}>
+            </td>
+            <td>
+                <delete-admin></delete-admin>
+            </td>
+        </tr>
+        <tr>
+            <td>
+
+            </td>
+            <td>
+                <add-admin></add-admin>
+            </td>
+        </tr>
+    </table>
+    <!--approver list-->
+    <table width="100%" border="1">
+        <tr>
+            <th style="text-align: center">Approver List</th>
+            <th style="text-align: center">Operate</th>
+        </tr>
+        <tr ng-repeat="approver in approverlist">
+            <td>
+                <input placeholder="Employee Name" style="border: none;margin-left: 45%" type="text" ng-model="approver.name" ng-readonly="approver.readonly" value={ {approver.name}}>
+            </td>
+            <td>
+                <delete-approver></delete-approver>
+            </td>
+        </tr>
+        <tr>
+            <td>
+
+            </td>
+            <td>
+                <add-approver></add-approver>
+            </td>
+        </tr>
+    </table>
+    <!--account list-->
+    <table width="100%" border="1">
+        <tr>
+            <th style="text-align: center">HR List</th>
+            <th style="text-align: center">Operate</th>
+        </tr>
+        <tr ng-repeat="accountant in accountantlist">
+            <td>
+                <input placeholder="Employee Name" style="border: none;margin-left: 45%" type="text" ng-model="accountant.name" ng-readonly="accountant.readonly" value={ {accountant.name}}>
+            </td>
+            <td>
+                <delete-accountant></delete-accountant>
+            </td>
+        </tr>
+        <tr>
+            <td>
+
+            </td>
+            <td>
+                <add-accountant></add-accountant>
+            </td>
+        </tr>
+    </table>
+    <!--email group list-->
+    <table width="100%" border="1">
+        <tr>
+            <th style="text-align: center">Email Group List</th>
+            <th style="text-align: center">Operate</th>
+        </tr>
+        <tr ng-repeat="emailgroup in emailgrouptlist">
+            <td>
+                <input placeholder="Group Name" style="border: none;margin-left: 45%" type="text" ng-model="emailgroup.name" ng-readonly="emailgroup.readonly" value={ {emailgroup.name}}>
+            </td>
+            <td>
+                <delete-emailgroup></delete-emailgroup>
+            </td>
+        </tr>
+        <tr>
+            <td>
+
+            </td>
+            <td>
+                <add-emailgroup></add-emailgroup>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <a style='float: right' href='javascript:void(0);' type='button' class='btn btn-default btn-sm' ng-click='save()'>  Save </a>
+</div>

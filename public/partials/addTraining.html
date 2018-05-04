@@ -1,0 +1,160 @@
+<div class="row bs-docs-example" id="examp">
+    <div style="margin-left: 110px;">
+        <div class="status_border">
+        <div class="hoverdiv">
+            <label id="message" style="color: black;"></label>
+        </div>
+
+        <div class="hoverTag">
+            <input type="hidden" name="message" value="Add a new agreement.">
+            <h4 class="font-black" id="new">New</h4>
+        </div>
+        <img class="img" src="/image/dot.png">
+        <div class="hoverTag">
+            <input type="hidden" name="message" value="Admin will accept your request.">
+            <h4 class="font-gray" id="submitted">Submitted</h4>
+        </div>
+        <img class="img" src="/image/dot.png">
+        <div class="hoverTag">
+            <input type="hidden" name="message" value="Approver will approve your request.">
+            <h4 class="font-gray" id="pending">Pending</h4>
+        </div>
+        <img class="img" src="/image/dot.png">
+        <div class="hoverTag">
+            <input type="hidden" name="message" value="Admin will confirm the expense report status, if submitted then finish.">
+            <h4 class="font-gray" id="approved">Approved</h4>
+        </div>
+        <img class="img" src="/image/dot.png">
+        <div class="hoverTag">
+            <input type="hidden" name="message" value="Your expense report passed.">
+            <h4 class="font-gray" id="finished">Finished</h4>
+        </div>
+        <div style="height: 50px"></div>
+        </div>
+
+        <div class="row" style="margin-top:30px;margin-left: 30px;" id="EmployeeByAdd">
+            <form class="form-horizontal">
+                <div class="row" id="warning" style="display: none;">
+                    <div class="col-xs-10">
+                        <div class="alert alert-warning" role="alert">
+                            <span id="msg"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-2" style="margin-left:1px"><p>*&nbsp;Applicant</p></div>
+                    <div class="col-xs-3"><p ng-bind="application.EMP_NAME"/></div>
+                    <div class="col-xs-2"><p style="margin-left: 40px">*&nbsp;Employee&nbsp;ID</p></div>
+                    <div class="col-xs-3"><p ng-bind="application.EMP_ID"/></div>
+                </div>
+
+                <div class="row" style="margin-top: 20px">
+                    <div class="col-xs-2">*&nbsp;Chinese&nbsp;Name</div>
+                    <div class="col-xs-3">
+                        <input class="form-control input-sm" ng-change="checkChineseName(application.CHINESE_NAME)"
+                               id="chineseName" ng-model="application.CHINESE_NAME"/>
+                    </div>
+                    <div class="col-xs-2"><span style="margin-left: 40px">*&nbsp;ID&nbsp; Number</span></div>
+                    <div class="col-xs-3">
+                        <input class="form-control input-sm" ng-change="checkIdNumber(application.IDENTIFICATION)"
+                               id="idNumber" ng-model="application.IDENTIFICATION" maxlength="18"/>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 20px">
+                    <div class="col-xs-2">*&nbsp;Training Organization</div>
+                    <div class="col-xs-8">
+                        <input class="form-control input-sm" id="trainingOrganization"
+                               ng-model="application.TRAINING_INSTITUTION"/>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 20px">
+                    <div class="col-xs-2">*&nbsp;Training&nbsp;Program</div>
+                    <div class="col-xs-8">
+                        <div class="input-group">
+                            <div class="input-group-btn">
+                                <input ng-focus="focusProgram()" data-toggle="dropdown" class="form-control input-sm"
+                                       id="trainingProgram" ng-model="application.TRAINING_PROGRAM"
+                                       style="background-color: white"/>
+
+                                <button data-toggle="dropdown" style="right: 33px;" type="button"
+                                        class="btn  btn-default btn-sm dropdown-toggle"><span class="caret"></span>
+                                </button>
+
+                                <ul class="col-xs-12 dropdown-menu dropdown-menu-left" role="menu"
+                                    style="max-height:250px;overflow-y:scroll;">
+                                    <li ng-repeat="program in allProgram| filter:{programName:application.TRAINING_PROGRAM}"
+                                        ng-click="setProgram(program.programName)">
+                                        <a href="javascript:void(0);">{{program.programName}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 20px">
+                    <div class="col-xs-2">*&nbsp;Total&nbsp;Cost</div>
+                    <div class="col-xs-3">
+                        <div class="input-group">
+                            <input class="form-control input-sm" id="totalCost" ng-model="application.TOTAL_COST"/>
+                            <span class="input-group-addon" style="">CNY</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 20px">
+                    <div class="col-xs-2">*&nbsp;Training&nbsp;Period</div>
+                    <div class="col-xs-5">
+                        <div class="input-group">
+                            <input type="text" class="form-control input-sm" style="background-color: white" id="trainingPeriodFrom"
+                                   ng-model="application.TRAINING_PERIOD_FROM" />
+                            <span class="input-group-addon" style="border: 0px;">-</span>
+                            <input type="text" class="form-control input-sm" style="background-color: white" id="trainingPeriodTo"
+                                   ng-model="application.TRAINING_PERIOD_TO" ng-click="trainingToLimit()"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 20px">
+                    <div class="col-xs-2">&nbsp;&nbsp;Justification</div>
+                    <div class="col-xs-8">
+                        <textarea class="form-control input-sm" maxlength="500" rows="3" cols="20"
+                                  ng-model="application.REASON"></textarea>
+                        <div style="line-height: 30px;"><span ng-bind="reasonLeft()"></span> characters remaining.</div>
+                    </div>
+                </div>
+
+                <form name="myForm" id="myForm">
+                    <fieldset>
+                        <h4>Supporting Documents(*.jpeg,*.png,*.bmp,*.pdf)<h5>Supporting documents(Certification, Grades, Invoice…)</h5></h4>
+                        <!--<input type="file" ngf-multiple="true" ngf-select ng-model="picFile" name="file"
+                               accept="" ngf-max-size="200MB" required
+                               ngf-model-invalid="errorFile">
+                        <br>-->
+                    <!--<ul class="uploadImage">
+                        <li ng-repeat="file in picFile" style="font:smaller">
+                            <img ng-show="myForm.file.$valid" ngf-thumbnail="file" class="thumb" width="300px" height="200px"><br/>
+                            <span>{{file.name}}</span>
+                        </li>
+                    </ul>-->
+                    </fieldset>
+                    <br>
+                </form>
+                <input id="kv-explorer" type="file" name="file" multiple>
+
+
+            </form>
+            <div class="row" style="margin-top: 15px;margin-bottom:5px">
+                <div class="btn-group col-xs-8"></div>
+                <div class="btn-group col-xs-1" style="margin-left: 40%;margin-bottom: 15px;">
+                    <button type="button" class="btn btn-default" ng-click="submit()" style="padding:5px 5px;font-size: 20px"
+                            id='empadd_submit'>Submit
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
